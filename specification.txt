@@ -1,0 +1,29 @@
+Interface com.matritellabs.utama.collection.Queue
+
+boolean add(Object e) Inserts the specified element into this queue if it is possible to do so
+immediately without violating capacity restrictions, returning true upon success
+and throwing an IllegalStateException if no space is currently available.
+
+Object   element() Retrieves, but does not remove, the head of this queue.
+
+boolean offer(Object e) Inserts the specified element into this queue if it is possible to do so
+immediately without violating capacity restrictions.
+
+Object   peek() Retrieves, but does not remove, the head of this queue, or returns null if this
+queue is empty.
+
+Object   poll() Retrieves and removes the head of this queue, or returns null if this queue is empty.
+
+Object   remove() Retrieves and removes the head of this queue.
+
+
+Questions:
+boolean add(Object e) - when does it have capacity problems? Just pick a maximum size?
+
+boolean offer(Object e) - same like the "add" method, jut without IllegalStateException?
+And returns true upon success
+
+Object   peek() - same like the "element" method, just returns null in case of empty Queue?
+
+Object   poll() - "what does removes the head of this queue" means? delete that element,
+which would be the next one according to FIFO?
