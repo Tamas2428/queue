@@ -28,7 +28,7 @@ public abstract class myQueue implements Queue {
      */
     @Override
     public boolean add(Object o) {
-        if(numberOfObjects > lengthOfQueue) {
+        if(numberOfObjects < lengthOfQueue) {
             mapOfTheQueue.put(numberOfObjects, o);
             numberOfObjects++;
             return true;
@@ -51,9 +51,20 @@ public abstract class myQueue implements Queue {
         }
     }
 
+    /**
+     * Inserts the specified element into this queue if it is possible to do so immediately without
+     violating capacity restrictions.
+     * @param o
+     * @return true upon success
+     */
     @Override
     public boolean offer(Object o) {
-        return false;
+        if(numberOfObjects < lengthOfQueue) {
+            mapOfTheQueue.put(numberOfObjects+1, o);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
