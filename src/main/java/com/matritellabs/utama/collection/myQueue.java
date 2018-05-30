@@ -3,9 +3,9 @@ package com.matritellabs.utama.collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Queue;
 
-public abstract class myQueue implements Queue {
+
+public class myQueue {
 
     //int vaiable to store maximum capacity of the Queue
     int lengthOfQueue;
@@ -26,7 +26,6 @@ public abstract class myQueue implements Queue {
      * @param o
      * @return true upon success, and throwing an IllegalStateException if no space is currently available.
      */
-    @Override
     public boolean add(Object o) {
         if(numberOfObjects < lengthOfQueue) {
             //numberOfObjects+1 - we start from zero, and every added element will have previous element key +1 as key
@@ -44,7 +43,6 @@ public abstract class myQueue implements Queue {
      * Retrieves, but does not remove, the head of this queue.
      * @return NoSuchElementException if this queue is empty
      */
-    @Override
     public Object element() {
         if(numberOfObjects == 0) {
             throw new NoSuchElementException();
@@ -59,7 +57,6 @@ public abstract class myQueue implements Queue {
      * @param o
      * @return true upon success, false otherwise
      */
-    @Override
     public boolean offer(Object o) {
         if(numberOfObjects < lengthOfQueue) {
             mapOfTheQueue.put(numberOfObjects+1, o);
@@ -74,7 +71,6 @@ public abstract class myQueue implements Queue {
      * Retrieves and removes the head of this queue.
      * @return NoSuchElementException if this queue is empty
      */
-    @Override
     public Object remove() {
         if(numberOfObjects != 0) {
             Object tempObject = mapOfTheQueue.get(1);
@@ -92,7 +88,6 @@ public abstract class myQueue implements Queue {
      * Retrieves, but does not remove, the head of this queue.
      * @return null if this queue is empty
      */
-    @Override
     public Object peek() {
         if(numberOfObjects != 0) {
             return mapOfTheQueue.get(1);
@@ -105,7 +100,6 @@ public abstract class myQueue implements Queue {
      * Retrieves and removes the head of this queue.
      * @return null if this queue is empty.
      */
-    @Override
     public Object poll() {
         if(numberOfObjects != 0) {
             Object tempObject = mapOfTheQueue.get(1);
