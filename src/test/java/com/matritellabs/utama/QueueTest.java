@@ -76,9 +76,9 @@ Object   remove() Retrieves and removes the head of this queue. Throws: NoSuchEl
     public void pollReturnsNullIfCalledMoreTimesThanElementsAdded() {
         queue.add(new Object());
         queue.add(new Object());
-        queue.remove();
-        queue.remove();
-        assertNull(queue.remove());
+        queue.poll();
+        queue.poll();
+        assertNull(queue.poll());
     }
 
     @Test
