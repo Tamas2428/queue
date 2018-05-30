@@ -8,6 +8,7 @@ public abstract class myQueue implements Queue {
 
     //int vaiable to store maximum capacity of the Queue
     int lengthOfQueue;
+    int numberOfObjects = 1;
 
     //map collection to store objects
     Map mapOfTheQueue = new HashMap(lengthOfQueue);
@@ -18,9 +19,21 @@ public abstract class myQueue implements Queue {
         lengthOfQueue = inputLength;
     }
 
+    /**
+     * Inserts the specified element into this queue if it is possible to do so immediately without violating
+     capacity restrictions.
+     * @param o
+     * @return true upon success, and throwing an IllegalStateException if no space is currently available.
+     */
     @Override
     public boolean add(Object o) {
-        return false;
+        if(numberOfObjects > lengthOfQueue) {
+            mapOfTheQueue.put(numberOfObjects, o);
+            numberOfObjects++;
+            return true;
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
     @Override
