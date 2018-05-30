@@ -88,6 +88,19 @@ public abstract class myQueue implements Queue {
         }
     }
 
+    /**
+     * Retrieves, but does not remove, the head of this queue.
+     * @return null if this queue is empty
+     */
+    @Override
+    public Object peek() {
+        if(numberOfObjects != 0) {
+            return mapOfTheQueue.get(1);
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public Object poll() {
         return null;
@@ -95,8 +108,5 @@ public abstract class myQueue implements Queue {
 
 
 
-    @Override
-    public Object peek() {
-        return null;
-    }
+
 }
