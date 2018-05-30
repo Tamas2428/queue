@@ -2,6 +2,7 @@ package com.matritellabs.utama.collection;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 
 public abstract class myQueue implements Queue {
@@ -36,6 +37,20 @@ public abstract class myQueue implements Queue {
         }
     }
 
+
+    /**
+     * Retrieves, but does not remove, the head of this queue.
+     * @return NoSuchElementException if this queue is empty
+     */
+    @Override
+    public Object element() {
+        if(numberOfObjects == 1) {
+            throw new NoSuchElementException();
+        } else {
+            return mapOfTheQueue.get(1);
+        }
+    }
+
     @Override
     public boolean offer(Object o) {
         return false;
@@ -51,10 +66,7 @@ public abstract class myQueue implements Queue {
         return null;
     }
 
-    @Override
-    public Object element() {
-        return null;
-    }
+
 
     @Override
     public Object peek() {
