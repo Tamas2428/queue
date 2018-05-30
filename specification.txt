@@ -1,29 +1,35 @@
+- Create a new project called Queue
+- Initialize it a gradle project (groupId: com.matritellabs.utama artifactId: Collections version: 1.0-SNAPSHOT)
+- Add junit as dependency
+- Configure logback logging
+- Person 1: Push project to GitHub!
+- Person 1: Set up CircleCI to build the project!
+- Person 1: Add other person as collaborator!
+- Person 1: Implement the queue
+- Person 2: Implement the tests
+
+Queue
+A queue is a particular kind of abstract data type or collection in which the entities in the collection are kept in order and the principle (or only) operations on the collection are the addition of entities to the rear terminal position, known as enqueue, and removal of entities from the front terminal position, known as dequeue. This makes the queue a First-In-First-Out (FIFO) data structure. In a FIFO data structure, the first element added to the queue will be the first one to be removed. This is equivalent to the requirement that once a new element is added, all elements that were added before have to be removed before the new element can be removed. Often a peek or front operation is also entered, returning the value of the front element without dequeuing it.
+
 Interface com.matritellabs.utama.collection.Queue
-
-boolean add(Object e) Inserts the specified element into this queue if it is possible to do so
-immediately without violating capacity restrictions, returning true upon success
-and throwing an IllegalStateException if no space is currently available.
-
-Object   element() Retrieves, but does not remove, the head of this queue.
-
-boolean offer(Object e) Inserts the specified element into this queue if it is possible to do so
-immediately without violating capacity restrictions.
-
-Object   peek() Retrieves, but does not remove, the head of this queue, or returns null if this
-queue is empty.
-
+boolean add(Object e) Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+Object   element() Retrieves, but does not remove, the head of this queue. Throws: NoSuchElementException - if this queue is empty
+boolean offer(Object e) Inserts the specified element into this queue if it is possible to do so immediately without violating capacity restrictions.
+Object   peek() Retrieves, but does not remove, the head of this queue, or returns null if this queue is empty.
 Object   poll() Retrieves and removes the head of this queue, or returns null if this queue is empty.
-
-Object   remove() Retrieves and removes the head of this queue.
+Object   remove() Retrieves and removes the head of this queue. Throws: NoSuchElementException - if this queue is empty
 
 
 Questions:
 boolean add(Object e) - when does it have capacity problems? Just pick a maximum size?
-
-boolean offer(Object e) - same like the "add" method, jut without IllegalStateException?
+- There should be a constructor that accepts an int that is the capacity!
+boolean offer(Object e) - same like the "add" method, jut without IllegalStateException? -> Yes
 And returns true upon success
 
-Object   peek() - same like the "element" method, just returns null in case of empty Queue?
+Object   peek() - same like the "element" method, just returns null in case of empty Queue? ->
+Read the changed spec above, add/offer, element/peek, poll/remove are only different in that that one of the returns null
+the other throws an exception
 
 Object   poll() - "what does removes the head of this queue" means? delete that element,
 which would be the next one according to FIFO?
+- FIFO is first in first out (so if you add e1 e2 e3 in that order than poll will give also e1 e2 e3 if called multiple times)
