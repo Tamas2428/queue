@@ -101,9 +101,22 @@ public abstract class myQueue implements Queue {
         }
     }
 
+    /**
+     * Retrieves and removes the head of this queue.
+     * @return null if this queue is empty.
+     */
     @Override
     public Object poll() {
-        return null;
+        if(numberOfObjects != 0) {
+            Object tempObject = mapOfTheQueue.get(1);
+            for(int i = 2; i < lengthOfQueue; i++) {
+                mapOfTheQueue.put(i-1, mapOfTheQueue.get(i));
+            }
+            numberOfObjects--;
+            return tempObject;
+        } else {
+            return null;
+        }
     }
 
 
